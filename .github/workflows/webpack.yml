@@ -8,11 +8,14 @@ on:
 
 jobs:
   build:
-    runs-on: node-latest
+    runs-on: ubuntu-latest
     
     steps:
     - uses: actions/checkout@v3
-
+    
+    - name: Setup Node.js environment
+      uses: actions/setup-node@v3.4.1
+        
     - name: Build
       run: |
         npm install
