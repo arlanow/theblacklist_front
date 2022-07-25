@@ -5,10 +5,11 @@ import {useParams} from "react-router-dom";
 const UnitPage = () => {
     let params = useParams();
     let id:number = parseInt(params.id!);
-    let unitsService = new UnitsService();
+
     let unit = useMemo(()=>{
+        let unitsService = new UnitsService();
         return unitsService.getUnit((id));
-    }, [id, unitsService])
+    }, [id])
     return (
         <div>
             {unit.title}

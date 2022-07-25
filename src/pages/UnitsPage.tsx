@@ -3,10 +3,11 @@ import UnitList from "../components/UnitList";
 import UnitsService from "../services/UnitsService";
 
 const UnitsPage = ({filter}:any) => {
-    let unitsService = new UnitsService();
+
     let filteredPosts = useMemo(() => {
+        let unitsService = new UnitsService();
         return unitsService.getFiltered(filter);
-    }, [filter, unitsService])
+    }, [filter])
     return (
         <div>
             <UnitList units={filteredPosts} />
