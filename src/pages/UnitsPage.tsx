@@ -6,7 +6,7 @@ const UnitsPage = ({filter}:any) => {
     let unitsService = new UnitsService();
     let filteredPosts = useMemo(() => {
         return unitsService.getFiltered(filter);
-    }, [filter])
+    }, [filter, unitsService])
     return (
         <div>
             <UnitList units={filteredPosts} />

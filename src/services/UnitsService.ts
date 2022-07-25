@@ -8,14 +8,14 @@ class UnitsService  {
         return this.posts;
     };
     getUnit = (id:number):{title:string} => {
-        let result = this.posts.filter((post)=>{ return (post.id == id) })
-        if (result.length==0) return {title: 'NotFound'}
-        else return <{title:string}>result.at(0);
+        let result = this.posts.filter((post)=>{ return (post.id === id) })
+        if (result.length===0) return {title: 'NotFound'}
+        else return result.at(0) as {title:string};
     }
     getFiltered = (filter?:string) => {
-        if (filter == undefined) return this.posts;
+        if (filter === undefined) return this.posts;
         return this.posts.filter((post)=>{
-            return (post.type == filter)
+            return (post.type === filter)
         })
     };
 }

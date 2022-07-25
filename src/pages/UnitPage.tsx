@@ -8,7 +8,7 @@ const UnitPage = () => {
     let unitsService = new UnitsService();
     let unit = useMemo(()=>{
         return unitsService.getUnit((id));
-    }, [id])
+    }, [id, unitsService])
     return (
         <div>
             {unit.title}
