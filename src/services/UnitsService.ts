@@ -1,3 +1,5 @@
+import Unit from "../models/UnitModel";
+
 class UnitsService  {
     posts = [
         {title: 'Wube Software', id: 0, type: 'company', subtitle: 'Компания', description: 'Разработчик видеоигр (Factorio)'},
@@ -7,6 +9,10 @@ class UnitsService  {
     getAll = () => {
         return this.posts;
     };
+    addUnit = (unit:Unit) => {
+        console.log(unit)
+        this.posts.push(unit);
+    }
     getUnit = (id:number):{title:string} => {
         let result = this.posts.filter((post)=>{ return (post.id === id) })
         if (result.length===0) return {title: 'NotFound'}

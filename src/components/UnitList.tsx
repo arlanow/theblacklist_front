@@ -11,7 +11,7 @@ const UnitList = ({units}:any) => {
         <div>
             <div className="flex flex-column w-full">
                 {units.map((unit:any) => {
-                    return (<UnitCard unit={unit} key={unit.id} onClick={click}></UnitCard>)
+                    return (<UnitCard unit={unit} key={unit.id} onDoubleClick={click}></UnitCard>)
                 })}
             </div>
         </div>
