@@ -1,9 +1,12 @@
-type Unit = {
+
+interface Unit {
     title:string;
-    subtitle:string;
     id:number;
-    type:string;
+    type:number;
     description:string;
+    iconId: number;
+    country: string;
+    url:string;
 }
 
 export default Unit;

@@ -1,15 +1,13 @@
-import React from 'react';
-import UnitsPage from "../pages/UnitsPage";
+import React from "react";
 import UnitPage from "../pages/UnitPage";
+import UnitsTablePage from "../pages/UnitsTablePage";
 
 const RouterService = () => {
-    let routes = []
-    routes.push({path: '/', element: <UnitsPage />})
-    routes.push({path: '/units', element: <UnitsPage />})
-    routes.push({path: '/units/companies', element: <UnitsPage filter='company' />})
-    routes.push({path: '/units/bloggers', element: <UnitsPage filter='blogger' />})
-    routes.push({path: '/unit/:id', element: <UnitPage />})
-    return routes;
+  let routes = []
+  routes.push({path: "/", element: <UnitsTablePage />})
+  routes.push({path: "/units", element: <UnitsTablePage />})
+  routes.push({path: "/unit/:id", element: <UnitPage />})
+  return routes;
 };
 
 export default RouterService;

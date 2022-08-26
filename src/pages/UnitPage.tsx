@@ -1,20 +1,36 @@
-import React, {useMemo} from 'react';
-import UnitsService from "../services/UnitsService";
-import {useParams} from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useParams} from "react-router-dom";
+import Unit from "../models/UnitModel";
+import {Button} from "primereact/button";
 
 const UnitPage = () => {
-    let params = useParams();
-    let id:number = parseInt(params.id!);
+  const navigate = useNavigate();
+  let params = useParams();
+  let id:number = parseInt(params.id!);
+  const [unit, setUnit] = useState({} as Unit);
+  
+  useEffect(() => {
+    fetch("http://localhost:3001/unit/"+id).then(response => {
+      response.json().then(result => {
+        setUnit(result)
+      })
+    })
+  }, [id])
 
-    let unit = useMemo(()=>{
-        let unitsService = new UnitsService();
-        return unitsService.getUnit((id));
-    }, [id])
-    return (
-        <div>
-            {unit.title}
-        </div>
-    );
+  const deleteUnit = () => {
+    let options = {
+      method: "DELETE"
+    }
+    fetch("http://localhost:3001/unit/"+id, options).then(res => {
+      if (!res.ok) console.log(res.statusText); else navigate("/units")
+    })
+  };
+  return (
+    <div>
+      <Button icon='pi pi-trash' onClick={deleteUnit}></Button>
+      {unit.title}
+    </div>
+  );
 };
 
 export default UnitPage;
